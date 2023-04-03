@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">To do list</string>
+    <string name="descr_add_button">Click to add task</string>
+    <string name="example_text_0">Example of text for visual editor</string>
+    <!--<string name="option_1">Option 1</string>
+    <string name="option_2">Option 2</string>
+    <string name="option_3">Option 3</string>
+    <string name="save_options_btn">Save Options</string>-->
+    <string name="add_task_button_text">Add task</string>
+    <string name="text_add_task">Add your task</string>
+    <string name="radio_button_red">High</string>
+    <string name="radio_button_blue">Medium</string>
+    <string name="radio_button_green">Low</string>
+    <string name="textView_add_your_task">Add task</string>
+    <string name="text_priority">Priority:</string>
+</resources>

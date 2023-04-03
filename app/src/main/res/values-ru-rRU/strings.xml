@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Список дел</string>
+    <string name="descr_add_button">Добавить задачу</string>
+    <string name="text_add_task">Добавить задачу</string>
+    <string name="textView_add_your_task">Добавить</string>
+    <string name="radio_button_red">Высокий</string>
+    <string name="radio_button_blue">Средний</string>
+    <string name="radio_button_green">Низкий</string>
+    <string name="example_text_0">Пример текста для визуального редактора</string>
+    <string name="add_task_button_text">Добавить</string>
+    <string name="text_priority">Приоритет:</string>
+</resources>
