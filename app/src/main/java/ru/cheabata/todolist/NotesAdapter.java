@@ -4,7 +4,6 @@ import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
@@ -12,10 +11,10 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class NotesAdapter
@@ -39,10 +38,20 @@ public class NotesAdapter
     }
 
     public void onItemMoved(int fromPosition, int toPosition) {
-        Note note = notes.remove(fromPosition);
-        notes.add(toPosition, note);
+        if (fromPosition < toPosition) {
+            for (int i = fromPosition; i < toPosition; i++) {
+                Collections.swap(notes, i, i + 1);
+            }
+        } else {
+            for (int i = fromPosition; i > toPosition; i--) {
+                Collections.swap(notes, i, i - 1);
+            }
+        }
         notifyItemMoved(fromPosition, toPosition);
-        if (noteDragListener != null && toPosition != RecyclerView.NO_POSITION) {
+    }
+
+    public void onItemMoveFinished() {
+        if (noteDragListener != null) {
             noteDragListener.onNoteDragged(notes);
         }
     }
