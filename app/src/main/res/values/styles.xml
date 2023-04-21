@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="BottomSheetDialogStyle" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowSoftInputMode">adjustResize</item>
+        <item name="colorPrimary">@color/grey_light</item>
+    </style>
+    <style name="MyButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="android:background">@drawable/button_selector</item>
+<!--        <item name="colorPrimary">@color/blue</item>-->
+    </style>
+</resources>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/linearLayoutModal"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:background="@color/grey"
+    android:windowSoftInputMode="adjustResize"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switchButtonDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="@string/delete_switch_button"
+        android:textColor="@color/grey_light2"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/editTextCustomNote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:backgroundTint="@color/grey_light"
+        android:hint="@string/regular_task_text"
+        android:maxHeight="120dp"
+        android:padding="12dp"
+        android:textColor="@color/edit_text"
+        android:textColorHint="@color/grey_light"
+        android:textSize="22sp" />
+
+<!--    <EditText-->
+<!--        android:id="@+id/editTextDeleteCustomNote"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginLeft="10dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_marginRight="10dp"-->
+<!--        android:backgroundTint="@color/grey_light"-->
+<!--        android:hint="@string/enter_task_text_delete"-->
+<!--        android:maxHeight="120dp"-->
+<!--        android:padding="12dp"-->
+<!--        android:textColor="@color/edit_text"-->
+<!--        android:textColorHint="@color/grey_light"-->
+<!--        android:textSize="22sp"-->
+<!--        android:visibility="gone" />-->
+
+    <TextView
+        android:id="@+id/textViewPriorityCustom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="7dp"
+        android:text="@string/text_priority"
+        android:textAlignment="center"
+        android:textColor="@color/grey_light2"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupBackgroundCustom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <RadioButton
+            android:id="@+id/radioButtonHighCustom"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="@color/red_text"
+            android:buttonTint="@color/black"
+            android:paddingEnd="5dp"
+            android:text="@string/radio_button_red"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <RadioButton
+            android:id="@+id/radioButtonDefaultCustom"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="@color/yellow_text"
+            android:buttonTint="@color/black"
+            android:paddingEnd="5dp"
+            android:text="@string/radio_button_blue"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <RadioButton
+            android:id="@+id/radioButtonLowCustom"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="@color/grey_light2"
+            android:buttonTint="@color/black"
+            android:paddingEnd="5dp"
+            android:text="@string/radio_button_green"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/buttonAddTaskCustom"
+        style="@style/MyButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/add_task_button_text"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/buttonDeleteTaskCustom"
+        style="@style/MyButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/btn_task_text_delete"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:visibility="gone" />
+    <!--    android:tint="@color/black"-->
+
+</LinearLayout>
