@@ -2,23 +2,48 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayoutMainActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ScrollView
-        android:id="@+id/scrollView3"
+    <TextView
+        android:id="@+id/dateTextView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:background="@color/grey_light"
+        android:gravity="center_horizontal"
+        android:padding="20dp"
+        android:fontFamily="@font/nunito_sans"
+        android:text="DD/MM/YYYY"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:id="@+id/linearLayoutNotes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewNotes"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.85"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@+id/dateTextView"
+        app:layout_constraintVertical_bias="0.02"
+        tools:itemCount="5"
+        tools:layout_editor_absoluteX="16dp"
+        tools:listitem="@layout/note_item" />
 
-        </LinearLayout>
-    </ScrollView>
+<!--    <TextView-->
+<!--        android:id="@+id/dateTextView2"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/yellow_text"-->
+<!--        android:gravity="center_horizontal"-->
+<!--        android:padding="20dp"-->
+<!--        android:fontFamily="@font/nunito_sans"-->
+<!--        android:text="DD/MM/YYYY"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="36sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent" />-->
 
     <TextView
         android:id="@+id/textViewAddYourTask"
@@ -26,8 +51,9 @@
         android:layout_height="wrap_content"
         android:layout_margin="25dp"
         android:text="@string/text_add_task"
+        android:textColor="@color/grey_dark"
         android:textSize="36sp"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/imageViewArrow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -36,13 +62,15 @@
         android:id="@+id/imageViewArrow"
         android:layout_width="160dp"
         android:layout_height="160dp"
-        android:layout_marginStart="75dp"
-        android:layout_marginBottom="75dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="510dp"
+        android:alpha="0.85"
         android:rotation="21"
         android:src="@drawable/right_drawn_arrow"
-        app:layout_constraintBottom_toBottomOf="@+id/scrollView3"
-        app:layout_constraintEnd_toEndOf="@+id/scrollView3"
-        app:layout_constraintStart_toStartOf="@+id/scrollView3" />
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerViewNotes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/recyclerViewNotes" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/buttonAddNotes"
@@ -50,9 +78,37 @@
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
         android:contentDescription="@string/descr_add_button"
+        android:visibility="gone"
         app:backgroundTint="#F200A6FF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_input_add" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/buttonAddNotes2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:contentDescription="@string/descr_add_button"
+        android:outlineSpotShadowColor="@color/red"
+        app:backgroundTint="@color/red_text"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAddNotes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_input_add"
+        app:tint="@android:color/black" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/buttonSetDefaultNotes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:contentDescription="@string/click_to_clear_all_and_set_default_tasks"
+        android:outlineSpotShadowColor="@color/white"
+        app:backgroundTint="@color/grey_light2"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAddNotes2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_delete"
+        app:tint="@color/black" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

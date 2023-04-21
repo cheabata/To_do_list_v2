@@ -4,10 +4,18 @@
     <string name="descr_add_button">Добавить задачу</string>
     <string name="text_add_task">Добавить задачу</string>
     <string name="textView_add_your_task">Добавить</string>
-    <string name="radio_button_red">Высокий</string>
-    <string name="radio_button_blue">Средний</string>
+    <string name="radio_button_red">Важная</string>
+    <string name="radio_button_blue">Дефолт</string>
     <string name="radio_button_green">Низкий</string>
     <string name="example_text_0">Пример текста для визуального редактора</string>
     <string name="add_task_button_text">Добавить</string>
-    <string name="text_priority">Приоритет:</string>
+    <string name="text_priority">Приоритет задачи:</string>
+    <string name="toast_pls_enter_note">Пожалуйста, введите текст</string>
+    <string name="click_to_clear_all_and_set_default_tasks">Нажмите, чтобы удалить все задачи и установить дефолтные</string>
+    <string name="delete_switch_button">Удалить  </string>
+    <string name="btn_task_text_delete">Удалить</string>
+    <string name="regular_task_text_delete">Введите текст задачи</string>
+    <string name="regular_task_text">Добавить регулярную задачу</string>
+    <string name="toast_reset_tasks_btn">Долгое нажатие - очистить до регулярных задач</string>
+    <string name="checkbox_regular_task">Повторяющаяся задача</string>
 </resources>

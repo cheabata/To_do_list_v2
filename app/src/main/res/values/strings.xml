@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">To do list</string>
     <string name="descr_add_button">Click to add task</string>
-    <string name="example_text_0">Example of text for visual editor</string>
+    <string name="example_text_0">Example of text for visual editor. This is long text</string>
     <!--<string name="option_1">Option 1</string>
     <string name="option_2">Option 2</string>
     <string name="option_3">Option 3</string>
@@ -13,4 +13,12 @@
     <string name="radio_button_green">Low</string>
     <string name="textView_add_your_task">Add task</string>
     <string name="text_priority">Priority:</string>
+    <string name="toast_pls_enter_note">Please enter a note</string>
+    <string name="click_to_clear_all_and_set_default_tasks">Click to clear all and set default tasks</string>
+    <string name="btn_task_text_delete">Enter task text</string>
+    <string name="delete_switch_button">Delete  </string>
+    <string name="regular_task_text_delete">Delete</string>
+    <string name="regular_task_text">Add regular task</string>
+    <string name="toast_reset_tasks_btn">Long press to reset to regular tasks</string>
+    <string name="checkbox_regular_task">Regular task</string>
 </resources>

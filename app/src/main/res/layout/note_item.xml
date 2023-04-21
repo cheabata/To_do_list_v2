@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/textViewNote"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="4dp"
     android:orientation="horizontal">
 
     <CheckBox
@@ -12,11 +14,37 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:padding="12dp"
+        android:buttonTint="@color/black"
+        android:paddingStart="5dp"
+        android:paddingTop="0dp"
+        android:paddingEnd="60dp"
+        android:paddingBottom="0dp"
         android:textColor="@android:color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        tools:background="@android:color/holo_blue_dark"
-        tools:text="@string/example_text_0" />
+        android:textSize="18sp"
+        tools:background="@drawable/checkbox_custom"
+        tools:text="@string/example_text_0"
+        tools:textColor="@android:color/black" />
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/handleCheckBoxTask"
+        android:layout_width="25dp"
+        android:layout_height="18dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="19dp"
+        android:src="@drawable/three_lines" />
+    <!--    <TextView-->
+    <!--        android:id="@+id/checkBoxTask"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="10dp"-->
+    <!--        android:layout_marginEnd="10dp"-->
+    <!--        android:padding="12dp"-->
+    <!--        android:textColor="@android:color/black"-->
+    <!--        android:textSize="20sp"-->
+    <!--        android:textStyle="bold"-->
+    <!--        tools:background="@android:color/holo_blue_dark"-->
+    <!--        tools:text="@string/example_text_0" />-->
+
+</RelativeLayout>
