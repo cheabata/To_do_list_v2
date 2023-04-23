@@ -7,16 +7,6 @@
     android:background="@color/grey"
     android:orientation="vertical">
 
-    <!--    <androidx.appcompat.widget.SwitchCompat-->
-    <!--        android:id="@+id/switchButtonRegularNote"-->
-    <!--        android:layout_marginStart="15dp"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="Regular task"-->
-    <!--        android:textColor="@color/grey_light2"-->
-    <!--        android:textSize="16sp"-->
-    <!--        android:textStyle="bold"-->
-    <!--        />-->
     <CheckBox
         android:id="@+id/сheckBoxRegular"
         android:layout_width="wrap_content"
@@ -29,17 +19,6 @@
         android:textSize="16sp"
         android:textStyle="bold" />
 
-
-    <!--    <androidx.appcompat.widget.SwitchCompat-->
-    <!--        android:id="@+id/switchButtonRegularNote"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginStart="15dp"-->
-    <!--        android:text="Is this regular task? "-->
-    <!--        android:textColor="@color/grey_light2"-->
-    <!--        android:textSize="16sp"-->
-    <!--        android:textStyle="bold" />-->
-
     <EditText
         android:id="@+id/editTextAddNote"
         android:layout_width="match_parent"
@@ -51,15 +30,11 @@
         android:hint="@string/text_add_task"
         android:maxHeight="120dp"
         android:padding="12dp"
+        android:textCursorDrawable="@color/grey_light2"
+        android:textColorHighlight="@color/grey_dark"
         android:textColor="@color/edit_text"
         android:textColorHint="@color/grey_light"
         android:textSize="22sp" />
-
-    <!--    <View-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="1dp"-->
-    <!--        android:layout_margin="5dp"-->
-    <!--        android:background="@color/greyLight" />-->
 
     <TextView
         android:layout_width="match_parent"
@@ -141,6 +116,5 @@
         android:text="@string/add_task_button_text"
         android:textColor="@color/black"
         android:textStyle="bold" />
-    <!--    android:tint="@color/black"-->
 
 </LinearLayout>

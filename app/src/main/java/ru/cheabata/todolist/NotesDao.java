@@ -13,6 +13,9 @@ public interface NotesDao {
     @Query("SELECT * FROM notes_table ORDER BY position")
     LiveData<List<Note>> getNotesByPosition();
 
+    @Query("SELECT * FROM notes_table ORDER BY position")
+    List<Note> getListNotesByPosition();
+
     @Query("SELECT * FROM notes_table")
     LiveData<List<Note>> getNotes();
 
@@ -32,9 +35,15 @@ public interface NotesDao {
     void removeAll();
 
     @Query("UPDATE notes_table SET isChecked = :isChecked WHERE id = :id")
-    void updateIsChecked(int id, boolean isChecked);
+    void updateNoteIsChecked(int id, boolean isChecked);
+
+    @Query("UPDATE notes_table SET isChecked = 0")
+    void setAllNotesChecked();
 
     @Query("UPDATE notes_table SET position = :position WHERE id = :id")
     void updateNotePosition(int id, int position);
+
+    @Query("UPDATE notes_table SET position = position + 1 WHERE position >= :position")
+    void incrementPositionForNotes(int position);
 
 }

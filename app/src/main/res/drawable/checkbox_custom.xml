@@ -2,9 +2,10 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle"
     android:id="@+id/checkbox_custom">
-    <stroke
-        android:width="3dp"
-        android:color="@color/grey_light" />
     <corners android:radius="8dp" />
-    <solid android:color="@color/grey_light" />
+    <gradient
+        android:type="linear"
+        android:startColor="@color/grey_light2"
+        android:endColor="@color/grey_light"
+        android:angle="90" />
 </shape>

@@ -9,17 +9,15 @@ public class CheckBoxItemTouchHelperCallback extends ItemTouchHelper.Callback {
 
     private final NotesAdapter mAdapter;
 
-    private int mToPosition = RecyclerView.NO_POSITION;
-
     public CheckBoxItemTouchHelperCallback(NotesAdapter adapter) {
         mAdapter = adapter;
     }
 
 
-    @Override
-    public boolean isLongPressDragEnabled() {
-        return true;
-    }
+//    @Override
+//    public boolean isLongPressDragEnabled() {
+//        return true;
+//    }
 
     @Override
     public boolean isItemViewSwipeEnabled() {
@@ -29,7 +27,16 @@ public class CheckBoxItemTouchHelperCallback extends ItemTouchHelper.Callback {
     @Override
     public int getMovementFlags(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
         int dragFlags = ItemTouchHelper.UP | ItemTouchHelper.DOWN;
-        int swipeFlags = ItemTouchHelper.START | ItemTouchHelper.END;
+        int swipeFlags;
+        Note currentNote = mAdapter.getNotes().get(viewHolder.getAdapterPosition());
+        boolean isRegularNote = currentNote.getIsRegular();
+
+//        Установить направления свайпов на основе регулярности note
+        if (isRegularNote) {
+            swipeFlags = ItemTouchHelper.RIGHT;
+        } else {
+            swipeFlags = ItemTouchHelper.LEFT;
+        }
         return makeMovementFlags(dragFlags, swipeFlags);
     }
 
@@ -52,6 +59,7 @@ public class CheckBoxItemTouchHelperCallback extends ItemTouchHelper.Callback {
 
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-//        mAdapter.onItemDismiss(viewHolder.getAdapterPosition());
+        mAdapter.onItemSwiped(viewHolder.getLayoutPosition());
     }
+
 }
