@@ -8,14 +8,14 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/dateTextView"
+        android:id="@+id/calendarTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/grey_light"
-        android:fontFamily="@font/nunito_sans"
         android:gravity="center_horizontal"
+        android:fontFamily="@font/nunito_sans"
+        android:background="@color/grey_light"
         android:padding="20dp"
-        android:text="DD/MM/YYYY"
+        android:text="gggg"
         android:textColor="@color/white"
         android:textSize="36sp"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,7 +26,7 @@
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintHeight_percent="0.85"
-        app:layout_constraintTop_toBottomOf="@+id/dateTextView"
+        app:layout_constraintTop_toBottomOf="@+id/calendarTextView"
         app:layout_constraintVertical_bias="0.02"
         tools:itemCount="5"
         tools:layout_editor_absoluteX="16dp"
@@ -37,18 +37,6 @@
         android:layout_height="wrap_content"
         android:src="@drawable/bottom_fade"
         app:layout_constraintBottom_toBottomOf="parent" />
-
-<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--        android:id="@+id/buttonAddNotes"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_margin="30dp"-->
-<!--        android:contentDescription="@string/descr_add_button"-->
-<!--        android:visibility="gone"-->
-<!--        app:backgroundTint="#F200A6FF"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:srcCompat="@android:drawable/ic_input_add" />-->
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/buttonAddNotes2"
@@ -62,7 +50,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_input_add"
         app:tint="@android:color/black" />
-<!--    android:outlineSpotShadowColor="@color/red"-->
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/buttonSetDefaultNotes"

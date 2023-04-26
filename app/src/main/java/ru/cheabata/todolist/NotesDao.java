@@ -16,9 +16,6 @@ public interface NotesDao {
     @Query("SELECT * FROM notes_table ORDER BY position")
     List<Note> getListNotesByPosition();
 
-    @Query("SELECT * FROM notes_table")
-    LiveData<List<Note>> getNotes();
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void add(Note note);
 
@@ -28,14 +25,8 @@ public interface NotesDao {
     @Query("DELETE FROM notes_table WHERE id = :id")
     void remove(int id);
 
-    @Query("DELETE FROM notes_table WHERE isRegular = 0")
-    void removeNonRegularNotes();
-
     @Query("DELETE FROM notes_table WHERE isRegular = 0 AND isChecked = 1")
     void removeNonRegularAndChecked();
-
-    @Query("DELETE FROM notes_table")
-    void removeAll();
 
     @Query("UPDATE notes_table SET isChecked = :isChecked WHERE id = :id")
     void updateNoteIsChecked(int id, boolean isChecked);

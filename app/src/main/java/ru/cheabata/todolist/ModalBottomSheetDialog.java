@@ -10,17 +10,14 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ModalBottomSheetDialog extends BottomSheetDialogFragment {
     private Button buttonAddTask;
@@ -29,7 +26,8 @@ public class ModalBottomSheetDialog extends BottomSheetDialogFragment {
     private RadioButton radioButtonLow;
     private EditText editTextAddNote;
     private CheckBox сheckBoxRegular;
-    private NoteDatabase noteDatabase;
+
+    private ViewModel viewModel;
     private InputMethodManager imm;
 
     //  CALLBACK
@@ -55,6 +53,7 @@ public class ModalBottomSheetDialog extends BottomSheetDialogFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        viewModel = new ViewModelProvider(this).get(ViewModel.class);
         setStyle(STYLE_NORMAL, R.style.BottomSheetDialogStyle);
     }
 
@@ -64,8 +63,6 @@ public class ModalBottomSheetDialog extends BottomSheetDialogFragment {
         setStyle(STYLE_NORMAL, R.style.BottomSheetDialogStyle);
 
         initViews(view);
-
-        noteDatabase = NoteDatabase.getInstance(getActivity().getApplication());
         radioButtonLow.setChecked(true);
 
         buttonAddTask.setOnClickListener(new View.OnClickListener() {
@@ -96,8 +93,8 @@ public class ModalBottomSheetDialog extends BottomSheetDialogFragment {
         editTextAddNote = view.findViewById(R.id.editTextAddNote);
         сheckBoxRegular = view.findViewById(R.id.сheckBoxRegular);
 
-        editTextAddNote.requestFocus(); // Показ клавиатуры
-        imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        editTextAddNote.requestFocus();
+        imm = (InputMethodManager) requireContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, 0);
 
         radioButtonHigh = view.findViewById(R.id.radioButtonHigh);
@@ -119,14 +116,14 @@ public class ModalBottomSheetDialog extends BottomSheetDialogFragment {
 
     public int determinePosition(int priority, boolean isRegular) {
         int position = -1;
-        if (noteDatabase.notesDao().getListNotesByPosition().size() == 0) {
+        if (viewModel.getListNotesSize() == 0) {
             position = 0;
         } else {
-            position = noteDatabase.notesDao().getLastPosition() + 1;
+            position = viewModel.getLastPosition() + 1;
         }
         if (!isRegular) {
             ArrayList<Note> notes = (ArrayList<Note>)
-                    noteDatabase.notesDao().getListNotesByPosition();
+                    viewModel.getListNotesByPosition();
             for (int i = 0; i < notes.size(); i++) {
                 if (notes.get(i).getPriority() == priority) {
                     int j = i + 1;
@@ -138,7 +135,7 @@ public class ModalBottomSheetDialog extends BottomSheetDialogFragment {
                 }
             }
         }
-        noteDatabase.notesDao().incrementPositionForNotes(position);
+        viewModel.incrementPositionForNotes(position);
         return position;
     }
 }

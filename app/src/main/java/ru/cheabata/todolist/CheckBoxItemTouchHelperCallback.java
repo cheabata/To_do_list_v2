@@ -13,12 +13,6 @@ public class CheckBoxItemTouchHelperCallback extends ItemTouchHelper.Callback {
         mAdapter = adapter;
     }
 
-
-//    @Override
-//    public boolean isLongPressDragEnabled() {
-//        return true;
-//    }
-
     @Override
     public boolean isItemViewSwipeEnabled() {
         return true;

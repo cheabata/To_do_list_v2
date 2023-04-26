@@ -29,9 +29,6 @@ import java.util.List;
 
 public class NotesAdapter
         extends RecyclerView.Adapter<NotesAdapter.NotesViewHolder> {
-//Адаптер должен знать, каким образом нужно создавать view из макета и каким образом
-// устанавливать значения (цвет текста, фона и т.д)
-//Поэтому создаем коллекцию элементов
 
     private List<Note> notes = new ArrayList<>();
 
