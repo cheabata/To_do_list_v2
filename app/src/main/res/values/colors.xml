@@ -9,14 +9,15 @@
     <color name="white">#FFFFFFFF</color>
     <color name="red">#eb4334</color>
     <color name="red_text">#f54702</color>
-    <color name="red_text_light">#ff741e</color>
+    <color name="red_text_light">#ff8940</color>
     <color name="blue">#00aeff</color>
     <color name="green">#40ff00</color>
     <color name="yellow_text">#ffcf1e</color>
     <color name="yellow_text_light">#e0c565</color>
     <color name="grey">#666666</color>
     <color name="grey_light">#999999</color>
-    <color name="grey_light2">#dedede</color>
+    <color name="grey_light2">#e3e3e3</color>
+    <color name="grey_light3">#cfcfcf</color>
     <color name="grey_dark">#363636</color>
     <color name="edit_text">#f2f2f2</color>
 </resources>

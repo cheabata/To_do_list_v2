@@ -10,7 +10,7 @@ import androidx.room.RoomDatabase;
 public abstract class NoteDatabase extends RoomDatabase {
 
     private static NoteDatabase instance = null;
-    private static final String DB_NAME = "notes_table.db";
+    private static final String DB_NAME = "notes_db.db";
 
     public static NoteDatabase getInstance(Application application) {
         if (instance == null) {

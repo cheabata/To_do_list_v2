@@ -28,11 +28,11 @@
         android:layout_marginRight="10dp"
         android:backgroundTint="@color/grey_light"
         android:hint="@string/text_add_task"
+        android:inputType="textCapSentences"
         android:maxHeight="120dp"
         android:padding="12dp"
-        android:textCursorDrawable="@color/grey_light2"
-        android:textColorHighlight="@color/grey_dark"
         android:textColor="@color/edit_text"
+        android:textColorHighlight="@color/grey_dark"
         android:textColorHint="@color/grey_light"
         android:textSize="22sp" />
 

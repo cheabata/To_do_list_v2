@@ -43,7 +43,6 @@ public class MainActivity
     private FloatingActionButton buttonAddNotes2;
     private FloatingActionButton buttonSetDefaultNotes;
     private NoteDatabase noteDatabase;
-    private Handler handler = new Handler(Looper.getMainLooper());
 
     //        CALLBACK 2
     @Override
@@ -80,18 +79,8 @@ public class MainActivity
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-//                Находим позицию, чтобы установить ее в конструкторе
-//                Создаем объект note с параметрами, переданными в callback
-//                Добавляем note в базу данных
                 Note note = new Note(position, task, isRegular, priority, false);
                 noteDatabase.notesDao().add(note);
-
-//                handler.post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        showHideAddTaskMessage();
-//                    }
-//                });
             }
         });
         thread.start();
@@ -125,20 +114,10 @@ public class MainActivity
         notesAdapter.setNoteSwipedListener(this);
 //        CALLBACK 2//
         recyclerViewNotes.setAdapter(notesAdapter);
-//        Способ установить лейаут менеджер (как будут располагаться элементы)
-//        recyclerViewNotes.setLayoutManager(new LinearLayoutManager(this));
-//        Но мы установили его в xml файле
 
-
-//        Получаем базу данных заметок, выгруженную в <List<Note>> и ставим на нее observe
-//        Чтобы следить за изменениями
         noteDatabase.notesDao().getNotesByPosition().observe(this, new Observer<List<Note>>() {
             @Override
             public void onChanged(List<Note> notes) {
-//                На входе получаем коллекцию notes (если вдруг она изменилась)
-//                Далее устанавливаем ее в адаптер, внутри него есть внутренняя коллекция
-//                и коллекцию из базы данных присваиваем той внутренней коллекции
-//                Т.е. отправляем данные адаптеру, что ему показывать
                 notesAdapter.setNotes(notes);
             }
         });
@@ -159,11 +138,10 @@ public class MainActivity
         buttonSetDefaultNotes.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                noteDatabase.notesDao().removeNonRegularNotes();
+                noteDatabase.notesDao().removeNonRegularAndChecked();
                 noteDatabase.notesDao().getListNotesByPosition();
                 noteDatabase.notesDao().setAllNotesChecked();
 //                Toast.makeText(MainActivity.this, "Все не регулярные задачи удалены!", Toast.LENGTH_SHORT).show();
-
                 return true;
             }
         });
@@ -178,7 +156,6 @@ public class MainActivity
         });
     }
 
-    //    Инициализация View элементов
     private void initViews() {
         recyclerViewNotes = findViewById(R.id.recyclerViewNotes);
         buttonAddNotes2 = findViewById(R.id.buttonAddNotes2);

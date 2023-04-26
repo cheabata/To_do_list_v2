@@ -14,6 +14,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
@@ -43,6 +44,13 @@ public class ModalBottomSheetDialog extends BottomSheetDialogFragment {
     }
     //  CALLBACK//
 
+    @Override
+    public void dismiss() {
+        if (imm != null && editTextAddNote != null) { //Скрытие клавиатуры
+            imm.hideSoftInputFromWindow(editTextAddNote.getWindowToken(), 0);
+        }
+        super.dismiss();
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,64 +58,14 @@ public class ModalBottomSheetDialog extends BottomSheetDialogFragment {
         setStyle(STYLE_NORMAL, R.style.BottomSheetDialogStyle);
     }
 
-    public int determinePosition(int priority, boolean isRegular) {
-        int position;
-        if (noteDatabase.notesDao().getListNotesByPosition().size() == 0) {
-            position = 0;
-        } else {
-            position = noteDatabase.notesDao().getLastPosition() + 1;
-        }
-        if (priority == 2 && !isRegular) {
-            ArrayList<Note> notes = (ArrayList<Note>)
-                    noteDatabase.notesDao().getListNotesByPosition();
-            for (int i = 0; i < notes.size(); i++) {
-                if (notes.get(i).getPriority() == 2) {
-                    for (int j = i + 1; j < notes.size(); j++) {
-                        if (notes.get(j).getPriority() != 2) {
-                            position = notes.get(j).getPosition();
-                            break;
-                        }
-                    }
-                }
-            }
-        } else if (priority == 1 && !isRegular) {
-            ArrayList<Note> notes = (ArrayList<Note>)
-                    noteDatabase.notesDao().getListNotesByPosition();
-            for (int i = 0; i < notes.size(); i++) {
-                if (notes.get(i).getPriority() == 1) {
-                    for (int j = i + 1; j < notes.size(); j++) {
-                        if (notes.get(j).getPriority() != 1) {
-                            position = notes.get(j).getPosition();
-                            break;
-                        }
-                    }
-                }
-            }
-        } else if (priority == 0 && !isRegular) {
-            ArrayList<Note> notes = (ArrayList<Note>)
-                    noteDatabase.notesDao().getListNotesByPosition();
-            for (int i = 0; i < notes.size(); i++) {
-                if (notes.get(i).getPriority() == 0) {
-                    for (int j = i + 1; j < notes.size(); j++) {
-                        if (notes.get(j).getPriority() != 0) {
-                            position = notes.get(j).getPosition();
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-        noteDatabase.notesDao().incrementPositionForNotes(position);
-        return position;
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.modal_dialog, container, false);
         setStyle(STYLE_NORMAL, R.style.BottomSheetDialogStyle);
 
-        noteDatabase = NoteDatabase.getInstance(getActivity().getApplication());
         initViews(view);
+
+        noteDatabase = NoteDatabase.getInstance(getActivity().getApplication());
         radioButtonLow.setChecked(true);
 
         buttonAddTask.setOnClickListener(new View.OnClickListener() {
@@ -132,18 +90,6 @@ public class ModalBottomSheetDialog extends BottomSheetDialogFragment {
         return view;
     }
 
-    private int getPriority() {
-        int priority;
-        if (radioButtonHigh.isChecked()) {
-            priority = 2;
-        } else if (radioButtonDefault.isChecked()) {
-            priority = 1;
-        } else {
-            priority = 0;
-        }
-        return priority;
-    }
-
     private void initViews(View view) {
         buttonAddTask = view.findViewById(R.id.buttonAddTask);
 
@@ -159,11 +105,40 @@ public class ModalBottomSheetDialog extends BottomSheetDialogFragment {
         radioButtonLow = view.findViewById(R.id.radioButtonLow);
     }
 
-    @Override
-    public void dismiss() {
-        if (imm != null && editTextAddNote != null) { //Скрытие клавиатуры
-            imm.hideSoftInputFromWindow(editTextAddNote.getWindowToken(), 0);
+    private int getPriority() {
+        int priority;
+        if (radioButtonHigh.isChecked()) {
+            priority = 2;
+        } else if (radioButtonDefault.isChecked()) {
+            priority = 1;
+        } else {
+            priority = 0;
         }
-        super.dismiss();
+        return priority;
+    }
+
+    public int determinePosition(int priority, boolean isRegular) {
+        int position = -1;
+        if (noteDatabase.notesDao().getListNotesByPosition().size() == 0) {
+            position = 0;
+        } else {
+            position = noteDatabase.notesDao().getLastPosition() + 1;
+        }
+        if (!isRegular) {
+            ArrayList<Note> notes = (ArrayList<Note>)
+                    noteDatabase.notesDao().getListNotesByPosition();
+            for (int i = 0; i < notes.size(); i++) {
+                if (notes.get(i).getPriority() == priority) {
+                    int j = i + 1;
+                    while (j < notes.size() && notes.get(j).getPriority() == priority) {
+                        j++;
+                    }
+                    position = notes.get(j - 1).getPosition() + 1;
+                    break;
+                }
+            }
+        }
+        noteDatabase.notesDao().incrementPositionForNotes(position);
+        return position;
     }
 }

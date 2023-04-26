@@ -133,6 +133,7 @@ public class NotesAdapter
     public void onBindViewHolder(NotesViewHolder viewHolder, int position) {
         Note note = notes.get(position);
         viewHolder.checkBoxTask.setText(note.getText());
+
 //        viewHolder.checkBoxTask.setText(note.getText() + " position: " + note.getPosition());
 
 //        Регулярные и обычные заметки установка стиля
@@ -141,7 +142,7 @@ public class NotesAdapter
                 = (RecyclerView.LayoutParams) viewHolder.textViewNote.getLayoutParams();
         if (!notes.get(position).getIsRegular()) {
             viewHolder.checkBoxTask.setTypeface(null, Typeface.NORMAL);
-            viewHolder.checkBoxTask.setTextSize(16f);
+            viewHolder.checkBoxTask.setTextSize(15f);
             layoutParams.width = 970;
 
         } else if (notes.get(position).getIsRegular()) {
@@ -157,8 +158,8 @@ public class NotesAdapter
         int endColor;
         switch (note.getPriority()) {
             case 0:
-                startColor = ContextCompat.getColor(viewHolder.itemView.getContext(), R.color.grey_light2);
-                endColor = ContextCompat.getColor(viewHolder.itemView.getContext(), R.color.white);
+                startColor = ContextCompat.getColor(viewHolder.itemView.getContext(), R.color.grey_light3);
+                endColor = ContextCompat.getColor(viewHolder.itemView.getContext(), R.color.grey_light2);
                 break;
             case 1:
                 startColor = ContextCompat.getColor(viewHolder.itemView.getContext(), R.color.yellow_text);
@@ -177,25 +178,6 @@ public class NotesAdapter
         gradientDrawable.setCornerRadius(36f);
         viewHolder.checkBoxTask.setBackground(gradientDrawable);
 
-//        ОРИГИНАЛЬНЫЙ КОД ДЛЯ ФОНА
-//        int strokeColor;
-//        switch (note.getPriority()) {
-//            case 0:
-//                strokeColor = ContextCompat.getColor(viewHolder.itemView.getContext(), R.color.grey_light2);
-//                break;
-//            case 1:
-//                strokeColor = ContextCompat.getColor(viewHolder.itemView.getContext(), R.color.yellow_text);
-//                break;
-//            default:
-//                strokeColor = ContextCompat.getColor(viewHolder.itemView.getContext(), R.color.red_text);
-//                break;
-//        }
-//        Drawable customDrawable = ContextCompat.getDrawable(
-//                viewHolder.itemView.getContext(), R.drawable.checkbox_custom);
-//        assert customDrawable != null;
-//        customDrawable.setTint(strokeColor);
-//        viewHolder.checkBoxTask.setBackground(customDrawable);
-
 //        CALLBACK 2
         viewHolder.checkBoxTask.setChecked(note.isChecked());
         viewHolder.checkBoxTask.setOnClickListener(new View.OnClickListener() {
@@ -210,7 +192,7 @@ public class NotesAdapter
         });
 //        CALLBACK 2
 
-//        Вид сделанных задач
+// Вид сделанных задач
         if (notes.get(position).isChecked()) {
             viewHolder.checkBoxTask.setAlpha(0.2f);
             viewHolder.checkBoxTask.setTextColor(ContextCompat.getColor(

@@ -31,6 +31,9 @@ public interface NotesDao {
     @Query("DELETE FROM notes_table WHERE isRegular = 0")
     void removeNonRegularNotes();
 
+    @Query("DELETE FROM notes_table WHERE isRegular = 0 AND isChecked = 1")
+    void removeNonRegularAndChecked();
+
     @Query("DELETE FROM notes_table")
     void removeAll();
 

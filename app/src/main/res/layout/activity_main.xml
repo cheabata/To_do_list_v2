@@ -54,22 +54,23 @@
         android:id="@+id/buttonAddNotes2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
+        android:layout_marginRight="18dp"
+        android:layout_marginBottom="40dp"
         android:contentDescription="@string/descr_add_button"
-        android:outlineSpotShadowColor="@color/red"
         app:backgroundTint="@color/red_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_input_add"
         app:tint="@android:color/black" />
+<!--    android:outlineSpotShadowColor="@color/red"-->
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/buttonSetDefaultNotes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
+        android:layout_marginRight="18dp"
+        android:layout_marginBottom="20dp"
         android:contentDescription="@string/click_to_clear_all_and_set_default_tasks"
-        android:outlineSpotShadowColor="@color/white"
         app:backgroundTint="@color/grey_light2"
         app:layout_constraintBottom_toTopOf="@+id/buttonAddNotes2"
         app:layout_constraintEnd_toEndOf="parent"
